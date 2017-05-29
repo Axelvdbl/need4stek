@@ -5,7 +5,7 @@
 ** Login   <alexandre.chamard-bois@epitech.eu@epitech.eu>
 **
 ** Started on  Mon May 29 13:13:34 2017 Alexandre Chamard-bois
-** Last update Mon May 29 13:34:23 2017 Alexandre Chamard-bois
+** Last update Mon May 29 14:50:15 2017 Alexandre Chamard-bois
 */
 
 #ifndef COMMAND_H_
@@ -24,11 +24,6 @@
 # define GET_SPEED_MIN  10 // GET_CAR_SPEED_MIN
 # define GET_SIMTIME    11 // GET_INFO_SIMTIME
 
-typedef union   u_in
-{
-  float         f_nb;
-  int           i_nb;
-}               t_in;
 
 typedef union   u_out
 {
@@ -37,11 +32,16 @@ typedef union   u_out
   long          stime[2];
 }               t_out;
 
-typedef struct  s_command
-{
-  int           n;
-  int           (*func)(t_in *, t_out *);
-  char          *tmp;
-}               t_command;
+int start(t_out *pars_out);
+int stop(t_out *pars_out);
+int forward(t_out *pars_out, float nb);
+int backwards(t_out *pars_out, float nb);
+int wheels_dir(t_out *pars_out, float nb);
+int lidar(t_out *pars_out);
+int get_wheels(t_out *pars_out);
+int cylce_wait(t_out *pars_out, int nb);
+int get_speed_max(t_out *pars_out);
+int get_speed_min(t_out *pars_out);
+int get_simtime(t_out *pars_out);
 
 #endif
