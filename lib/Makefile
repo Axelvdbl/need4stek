@@ -5,7 +5,7 @@
 ## Login   <alexandre.chamard-bois@epitech.eu@epitech.eu>
 ##
 ## Started on  Fri Apr  7 15:45:41 2017 Alexandre Chamard-bois
-## Last update Sun Apr 30 18:54:24 2017 Alexandre Chamard-bois
+## Last update Mon May 29 22:11:00 2017 Alexandre Chamard-bois
 ##
 
 include ./include/depend.mk
@@ -40,6 +40,7 @@ SRC_MY	=				cat.c												\
 								my_strstr.c									\
 								my_strtok.c									\
 								my_swap.c										\
+								my_wordtab.c								\
 
 SRC_PRINTF	=		myprintf.c									\
 								start.c											\

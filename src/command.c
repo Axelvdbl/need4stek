@@ -5,7 +5,7 @@
 ** Login   <alexandre.chamard-bois@epitech.eu@epitech.eu>
 **
 ** Started on  Mon May 29 11:44:03 2017 Alexandre Chamard-bois
-** Last update Mon May 29 14:50:49 2017 Alexandre Chamard-bois
+** Last update Mon May 29 22:45:33 2017 Alexandre Chamard-bois
 */
 
 #include <string.h>
@@ -14,31 +14,40 @@
 #include "libmy.h"
 #include "command.h"
 
-int recup_code1(char *str, t_out *pars_out)
+int recup_code1(char *str)
 {
   int   nb;
   char  status[3][128];
 
-  (void) pars_out;
   memset(status, 0, 3 * 128);
-  if (sscanf(str, "%d:%[^:]:%[^:]:%s",
-      &nb, status[0], status[1], status[2]) != 4)
+  if (sscanf(str, "%d:%[^:]:%[^:]:%[^\n]", &nb, status[0], status[1],
+            status[2]) != 4)
     return (-1);
-  printf("%d\n%s\n%s\n", nb, status[0], status[1]);
+  dprintf(2, "%d:%s:%s:%s\n", nb, status[0], status[1], status[2]);
   return (nb);
 }
 
 int recup_code2(char *str, t_out *pars_out)
 {
+  int   i;
   int   nb;
-  char  status[3][128];
+  char  **tab;
 
-  (void) pars_out;
-  memset(status, 0, 3 * 128);
-  if (sscanf(str, "%d:%[^:]:%[^:]:%s",
-      &nb, status[0], status[1], status[2]) != 4)
+  if (!(tab = my_wordtab(str, ":")) || my_tablen(tab) < 35)
+  {
+    if (tab)
+      free_tab(tab);
     return (-1);
-  printf("%d\n%s\n%s\n", nb, status[0], status[1]);
+  }
+  nb = atoi(tab[0]);
+  dprintf(2, "%d:%s:%s:%s\n", nb, tab[1], tab[2], tab[34]);
+  i = 0;
+  while (i < 32)
+  {
+    pars_out->lidar[i] = atof(tab[i + 3]);
+    i++;
+  }
+  free_tab(tab);
   return (nb);
 }
 
@@ -47,12 +56,11 @@ int recup_code3(char *str, t_out *pars_out)
   int   nb;
   char  status[3][128];
 
-  (void) pars_out;
   memset(status, 0, 3 * 128);
-  if (sscanf(str, "%d:%[^:]:%[^:]:%f:%s",
-      &nb, status[0], status[1], &pars_out->get, status[2]) != 5)
+  if (sscanf(str, "%d:%[^:]:%[^:]:%f:%[^\n]", &nb, status[0], status[1],
+      &pars_out->get, status[2]) != 5)
     return (-1);
-  printf("%d\n%s\n%s\nfloat: %f\n", nb, status[0], status[1], pars_out->get);
+  dprintf(2, "%d:%s:%s:%s\n", nb, status[0], status[1], status[2]);
   return (nb);
 }
 
@@ -61,30 +69,21 @@ int recup_code4(char *str, t_out *pars_out)
   int   nb;
   char  status[3][128];
 
-  (void) pars_out;
   memset(status, 0, 3 * 128);
-  if (sscanf(str, "%d:%[^:]:%[^:]:[%ld,%ld]:%s", &nb, status[0], status[1],
-      &pars_out->stime[0], &pars_out->stime[1], status[2]) != 6)
+  if (sscanf(str, "%d:%[^:]:%[^:]:[%ld,%ld]:%[^\n]", &nb, status[0],
+      status[1], &pars_out->stime[0], &pars_out->stime[1], status[2]) != 6)
     return (-1);
-  printf("%d\n%s\n%s\n", nb, status[0], status[1]);
+  dprintf(2, "%d:%s:%s:%s\n", nb, status[0], status[1], status[2]);
   return (nb);
 }
 
 int main()
 {
-  int i;
-  t_out pars_out;
-  char *str;
+  t_out outt;
 
-  while ((str = get_next_line(0)))
-  {
-    i = 0;
-    while (g_command[i].tmp && strcmp(g_command[i].tmp, str))
-      i++;
-    if (g_command[i].tmp)
-      pars_cmd(g_command[i].n, &pars_in, &pars_out);
-    else
-      dprintf(2, "err command.\n");
-    free(str);
-  }
+  (void) outt;
+  start();
+  forward(1);
+  cycle_wait(42);
+  stop();
 }
