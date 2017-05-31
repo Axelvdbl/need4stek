@@ -5,12 +5,12 @@
 ** Login   <axel.vandenabeele@epitech.eu>
 **
 ** Started on  Mon May 29 14:24:28 2017 Axel Vandenabeele
-** Last update Wed May 31 14:44:04 2017 Alexandre Chamard-bois
+** Last update Wed May 31 14:46:11 2017 Axel Vandenabeele
 */
 
 #include "command.h"
 
-float	AVG(float lidar_pars[32], int plc, int flt, int nbr_avg)
+float	AVG(float lidar_pars[32], int flt, int nbr_avg)
 {
 	float	my_avg;
 
@@ -30,7 +30,7 @@ void 	get_avg(float lidar_avg[28], float lidar_pars[32])
 	plc = 0;
 	while (plc < 28)
 	{
-		lidar_avg[plc] = AVG(lidar_pars, plc, flt, nbr_avg);
+		lidar_avg[plc] = AVG(lidar_pars, flt, nbr_avg);
 		flt++;
 		plc++;
 	}
@@ -59,7 +59,7 @@ void 	algo_start(float lidar_avg[28], float lidar_pars[32])
 	lidar(lidar_pars);
 	get_avg(lidar_avg, lidar_pars);
 	max = get_max(lidar_avg);
-	wheels_dir();
+	wheels_dir(0.5);
 	(max > 1000) ? forward(1) : forward(0.2);
 }
 
