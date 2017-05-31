@@ -5,21 +5,21 @@
 ** Login   <axel.vandenabeele@epitech.eu>
 **
 ** Started on  Mon May 29 14:24:28 2017 Axel Vandenabeele
-** Last update Tue May 30 22:07:22 2017 Axel Vandenabeele
+** Last update Wed May 31 14:44:04 2017 Alexandre Chamard-bois
 */
 
-#include "my.h"
+#include "command.h"
 
-float	AVG(t_out* pars_out, int plc, int flt, int nbr_avg)
+float	AVG(float lidar_pars[32], int plc, int flt, int nbr_avg)
 {
 	float	my_avg;
 
-	my_avg = pars_out->lidar[flt - 3] + pars_out->lidar[flt - 2];
-	my_avg += pars_out->lidar[flt - 1] + pars_out->lidar[flt];
+	my_avg = lidar_pars[flt - 3] + lidar_pars[flt - 2];
+	my_avg += lidar_pars[flt - 1] + lidar_pars[flt];
 	return (my_avg / nbr_avg);
 }
 
-void 	get_avg(float lidar_avg, t_out* pars_out)
+void 	get_avg(float lidar_avg[28], float lidar_pars[32])
 {
 	int	nbr_avg;
 	int	flt;
@@ -30,30 +30,13 @@ void 	get_avg(float lidar_avg, t_out* pars_out)
 	plc = 0;
 	while (plc < 28)
 	{
-		lidar_avg[plc] = AVG(pars_out, plc, flt, nbr_avg);
+		lidar_avg[plc] = AVG(lidar_pars, plc, flt, nbr_avg);
 		flt++;
 		plc++;
 	}
 }
 
-void 	algo_start(float lidar_avg, t_out* pars_out)
-{
-	int	max;
-
-	start();
-	lidar(pars_out);
-	get_avg(lidar_avg, pars_out);
-	max = get_max(lidar_avg);
-	wheels_dir();
-	(max > 1000) ? forward(1) : forward(0.2);
-}
-
-void 	algo_stop()
-{
-	stop();
-}
-
-int	get_max(float	lidar_avg)
+int	get_max(float	lidar_avg[28])
 {
 	int	plc;
 	int	max;
@@ -62,24 +45,36 @@ int	get_max(float	lidar_avg)
 	max = -1;
 	while (plc < 28)
 	{
-		max = (max > lidar_avg[plc]) ? lidar_avg[plc] : max);
+		max = ((max > lidar_avg[plc]) ? lidar_avg[plc] : max);
 		plc++;
 	}
 	return (max);
 }
 
+void 	algo_start(float lidar_avg[28], float lidar_pars[32])
+{
+	int	max;
+
+	start();
+	lidar(lidar_pars);
+	get_avg(lidar_avg, lidar_pars);
+	max = get_max(lidar_avg);
+	wheels_dir();
+	(max > 1000) ? forward(1) : forward(0.2);
+}
+
 void 	send_cmd()
 {
-	t_out pars_out;
+	float lidar_pars[32];
 	float	lidar_avg[28];
 	int	max;
 
-	algo_start(lidar_avg, &pars_out);
+	algo_start(lidar_avg, lidar_pars);
 	while (1)
 	{
-		get_avg(lidar_avg, &pars_out);
+		get_avg(lidar_avg, lidar_pars);
 		max = get_max(lidar_avg);
 	}
-	algo_stop();
+	stop();
 	return;
 }

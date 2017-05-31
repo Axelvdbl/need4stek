@@ -5,7 +5,7 @@
 ** Login   <alexandre.chamard-bois@epitech.eu@epitech.eu>
 **
 ** Started on  Wed Apr 12 20:19:13 2017 Alexandre Chamard-bois
-** Last update Mon May 29 22:10:28 2017 Alexandre Chamard-bois
+** Last update Wed May 31 08:49:25 2017 Alexandre Chamard-bois
 */
 
 #include "macro.h"
@@ -93,7 +93,7 @@ char 		**my_tabdup(const char **tab);
 char    *my_strtok(const char *str, const char *c);
 char    *my_split(char *str, int *who, const int nb, ...);
 char    **my_str_to_wordtab(const char *str);
-char		**my_wordtab(const char *str, const char *sep);
+char		**my_wordtab(char *str);
 void    *my_memdup(const void *ptr, const int size);
 
 // NBs //

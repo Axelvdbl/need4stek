@@ -5,7 +5,7 @@
 ** Login   <alexandre.chamard-bois@epitech.eu@epitech.eu>
 **
 ** Started on  Mon May 29 14:15:44 2017 Alexandre Chamard-bois
-** Last update Mon May 29 22:44:36 2017 Alexandre Chamard-bois
+** Last update Tue May 30 21:46:04 2017 Alexandre Chamard-bois
 */
 
 #include <stdio.h>
@@ -14,7 +14,7 @@
 #include "libmy.h"
 #include "command.h"
 
-int lidar(t_out *pars_out)
+int lidar(float lid[32])
 {
   int ret;
   char *str;
@@ -23,12 +23,12 @@ int lidar(t_out *pars_out)
   write(1, "GET_INFO_LIDAR\n", 15);
   if (!(str = get_next_line(0)))
     return (-1);
-  ret = recup_code2(str, pars_out);
+  ret = recup_code2(str, lid);
   free(str);
   return (ret);
 }
 
-int get_speed(t_out *pars_out)
+int get_speed(float *get)
 {
   int ret;
   char *str;
@@ -37,12 +37,12 @@ int get_speed(t_out *pars_out)
   write(1, "GET_CURRENT_SPEED\n", 18);
   if (!(str = get_next_line(0)))
     return (-1);
-  ret = recup_code3(str, pars_out);
+  ret = recup_code3(str, get);
   free(str);
   return (ret);
 }
 
-int get_wheels(t_out *pars_out)
+int get_wheels(float *get)
 {
   int ret;
   char *str;
@@ -51,7 +51,7 @@ int get_wheels(t_out *pars_out)
   write(1, "GET_CURRENT_WHEELS\n", 19);
   if (!(str = get_next_line(0)))
     return (-1);
-  ret = recup_code3(str, pars_out);
+  ret = recup_code3(str, get);
   free(str);
   return (ret);
 }

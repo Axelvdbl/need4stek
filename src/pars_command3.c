@@ -5,7 +5,7 @@
 ** Login   <alexandre.chamard-bois@epitech.eu@epitech.eu>
 **
 ** Started on  Mon May 29 14:15:44 2017 Alexandre Chamard-bois
-** Last update Mon May 29 22:30:54 2017 Alexandre Chamard-bois
+** Last update Tue May 30 21:46:51 2017 Alexandre Chamard-bois
 */
 
 #include <stdio.h>
@@ -14,7 +14,7 @@
 #include "libmy.h"
 #include "command.h"
 
-int get_speed_max(t_out *pars_out)
+int get_speed_max(float *get)
 {
   int ret;
   char *str;
@@ -23,12 +23,12 @@ int get_speed_max(t_out *pars_out)
   write(1, "GET_CAR_SPEED_MAX\n", 18);
   if (!(str = get_next_line(0)))
     return (-1);
-  ret = recup_code3(str, pars_out);
+  ret = recup_code3(str, get);
   free(str);
   return (ret);
 }
 
-int get_speed_min(t_out *pars_out)
+int get_speed_min(float *get)
 {
   int ret;
   char *str;
@@ -37,12 +37,12 @@ int get_speed_min(t_out *pars_out)
   write(1, "GET_CAR_SPEED_MIN\n", 18);
   if (!(str = get_next_line(0)))
     return (-1);
-  ret = recup_code3(str, pars_out);
+  ret = recup_code3(str, get);
   free(str);
   return (ret);
 }
 
-int get_simtime(t_out *pars_out)
+int get_simtime(long stime[2])
 {
   int ret;
   char *str;
@@ -51,7 +51,7 @@ int get_simtime(t_out *pars_out)
   write(1, "GET_INFO_SIMTIME\n", 17);
   if (!(str = get_next_line(0)))
     return (-1);
-  ret = recup_code4(str, pars_out);
+  ret = recup_code4(str, stime);
   free(str);
   return (ret);
 }
