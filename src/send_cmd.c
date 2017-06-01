@@ -5,7 +5,7 @@
 ** Login   <axel.vandenabeele@epitech.eu>
 **
 ** Started on  Mon May 29 14:24:28 2017 Axel Vandenabeele
-** Last update Wed May 31 14:46:11 2017 Axel Vandenabeele
+** Last update Wed May 31 21:06:01 2017 Alexandre Chamard-bois
 */
 
 #include "command.h"
@@ -59,11 +59,10 @@ void 	algo_start(float lidar_avg[28], float lidar_pars[32])
 	lidar(lidar_pars);
 	get_avg(lidar_avg, lidar_pars);
 	max = get_max(lidar_avg);
-	wheels_dir(0.5);
 	(max > 1000) ? forward(1) : forward(0.2);
 }
 
-void 	send_cmd()
+int 	main()
 {
 	float lidar_pars[32];
 	float	lidar_avg[28];
@@ -76,5 +75,5 @@ void 	send_cmd()
 		max = get_max(lidar_avg);
 	}
 	stop();
-	return;
+	return (0);
 }

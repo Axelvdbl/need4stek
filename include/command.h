@@ -5,11 +5,13 @@
 ** Login   <alexandre.chamard-bois@epitech.eu@epitech.eu>
 **
 ** Started on  Mon May 29 13:13:34 2017 Alexandre Chamard-bois
-** Last update Wed May 31 09:07:00 2017 Alexandre Chamard-bois
+** Last update Thu Jun  1 09:20:44 2017 Alexandre Chamard-bois
 */
 
 #ifndef COMMAND_H_
 # define COMMAND_H_
+
+#define SPEED(m, d) (m == d[2] ? 0.6 : m == d[1] || m == d[3] ? 0.2 : 0)
 
 int start();
 int stop();
