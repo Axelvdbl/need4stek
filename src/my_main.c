@@ -5,7 +5,7 @@
 ** Login   <alexandre.chamard-bois@epitech.eu@epitech.eu>
 **
 ** Started on  Tue May 30 21:47:48 2017 Alexandre Chamard-bois
-** Last update Thu Jun  1 09:20:32 2017 Alexandre Chamard-bois
+** Last update Fri Jun  2 18:36:19 2017 Axel Vandenabeele
 */
 
 #include <stdio.h>
@@ -75,7 +75,7 @@ void loop()
     avg(dir);
     max = get_max(dir);
     min = get_min(dir);
-    dprintf(2, "max: %f\tmin: %f\n", max, min);
+    //dprintf(2, "max: %f\tmin: %f\n", max, min);
     // speed = SPEED(max, dir);
     speed = min > 1000 ? .6 : min > 400 ? .4 : .2;
     wheel = (min == dir[1] ? -0.4 : min == dir[0] ? -0.2 :
@@ -87,7 +87,7 @@ void loop()
     // if (current == 0)
     // wheel = (max == dir[2] ? 0 : max == dir[1] ? 0.2 :
     //         max == dir[3] ? -0.2 : max == dir[0] ? 0.4 : -0.4);
-    dprintf(2, "speed: %f\nwheel: %f\n", speed, wheel);
+    //dprintf(2, "speed: %f\nwheel: %f\n", speed, wheel);
     if (speed > 0)
       forward(speed);
     // get_wheels(&current);
