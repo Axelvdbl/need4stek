@@ -5,7 +5,7 @@
 ## Login   <alexandre.chamard-bois@epitech.eu@epitech.eu>
 ##
 ## Started on  Fri Apr  7 15:45:41 2017 Alexandre Chamard-bois
-## Last update Fri Jun  2 19:00:18 2017 Axel Vandenabeele
+## Last update Sat Jun  3 19:03:33 2017 Axel Vandenabeele
 ##
 
 include ./include/depend.mk
@@ -14,7 +14,7 @@ SRC	=				command.c								\
 						pars_command1.c					\
 						pars_command2.c					\
 						pars_command3.c					\
-						algo_3.c \
+						algo_2.c \
 
 CFLAGS			+=	-I./include
 
