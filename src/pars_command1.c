@@ -5,7 +5,7 @@
 ** Login   <alexandre.chamard-bois@epitech.eu@epitech.eu>
 **
 ** Started on  Mon May 29 14:15:44 2017 Alexandre Chamard-bois
-** Last update Mon May 29 22:37:31 2017 Alexandre Chamard-bois
+** Last update Sun Jun  4 08:50:44 2017 alexandre Chamard-bois
 */
 
 #include <stdio.h>
@@ -14,10 +14,10 @@
 #include "libmy.h"
 #include "command.h"
 
-int start()
+int	start()
 {
-  int ret;
-  char *str;
+  int	ret;
+  char	*str;
 
   dprintf(2, "start_simulation\n");
   write(1, "START_SIMULATION\n", 17);
@@ -28,10 +28,10 @@ int start()
   return (ret);
 }
 
-int stop()
+int	stop()
 {
-  int ret;
-  char *str;
+  int	ret;
+  char	*str;
 
   dprintf(2, "stop_simulation\n");
   write(1, "STOP_SIMULATION\n", 16);
@@ -42,10 +42,10 @@ int stop()
   return (ret);
 }
 
-int forward(float nb)
+int	forward(float nb)
 {
-  int ret;
-  char *str;
+  int	ret;
+  char	*str;
 
   dprintf(2, "car_forward:%f\n", nb);
   printf("CAR_FORWARD:%f\n", nb);
@@ -57,10 +57,10 @@ int forward(float nb)
   return (ret);
 }
 
-int backwards(float nb)
+int	backwards(float nb)
 {
-  int ret;
-  char *str;
+  int	ret;
+  char	*str;
 
   dprintf(2, "car_backwards:%f\n", nb);
   printf("CAR_BACKWARDS:%f\n", nb);
@@ -72,10 +72,10 @@ int backwards(float nb)
   return (ret);
 }
 
-int wheels_dir(float nb)
+int	wheels_dir(float nb)
 {
-  int ret;
-  char *str;
+  int	ret;
+  char	*str;
 
   dprintf(2, "wheels_dir:%f\n", nb);
   printf("WHEELS_DIR:%f\n", nb);

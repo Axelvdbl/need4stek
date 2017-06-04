@@ -5,13 +5,11 @@
 ** Login   <alexandre.chamard-bois@epitech.eu@epitech.eu>
 **
 ** Started on  Mon May 29 13:13:34 2017 Alexandre Chamard-bois
-** Last update Thu Jun  1 09:20:44 2017 Alexandre Chamard-bois
+** Last update Sun Jun  4 08:47:42 2017 alexandre Chamard-bois
 */
 
 #ifndef COMMAND_H_
 # define COMMAND_H_
-
-#define SPEED(m, d) (m == d[2] ? 0.6 : m == d[1] || m == d[3] ? 0.2 : 0)
 
 int start();
 int stop();
@@ -30,5 +28,6 @@ int recup_code1(char *str);
 int recup_code2(char *str, float lid[32]);
 int recup_code3(char *str, float *get);
 int recup_code4(char *str, long stime[2]);
+int verif_rep(int rep);
 
 #endif

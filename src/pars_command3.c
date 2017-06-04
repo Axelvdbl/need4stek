@@ -5,7 +5,7 @@
 ** Login   <alexandre.chamard-bois@epitech.eu@epitech.eu>
 **
 ** Started on  Mon May 29 14:15:44 2017 Alexandre Chamard-bois
-** Last update Tue May 30 21:46:51 2017 Alexandre Chamard-bois
+** Last update Sun Jun  4 08:51:42 2017 alexandre Chamard-bois
 */
 
 #include <stdio.h>
@@ -14,10 +14,10 @@
 #include "libmy.h"
 #include "command.h"
 
-int get_speed_max(float *get)
+int	get_speed_max(float *get)
 {
-  int ret;
-  char *str;
+  int	ret;
+  char	*str;
 
   dprintf(2, "get_car_speed_max\n");
   write(1, "GET_CAR_SPEED_MAX\n", 18);
@@ -28,10 +28,10 @@ int get_speed_max(float *get)
   return (ret);
 }
 
-int get_speed_min(float *get)
+int	get_speed_min(float *get)
 {
-  int ret;
-  char *str;
+  int	ret;
+  char	*str;
 
   dprintf(2, "get_car_speed_min\n");
   write(1, "GET_CAR_SPEED_MIN\n", 18);
@@ -42,10 +42,10 @@ int get_speed_min(float *get)
   return (ret);
 }
 
-int get_simtime(long stime[2])
+int	get_simtime(long stime[2])
 {
-  int ret;
-  char *str;
+  int	ret;
+  char	*str;
 
   dprintf(2, "get_info_simtime\n");
   write(1, "GET_INFO_SIMTIME\n", 17);

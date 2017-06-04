@@ -5,7 +5,7 @@
 ** Login   <alexandre.chamard-bois@epitech.eu@epitech.eu>
 **
 ** Started on  Mon May 29 14:15:44 2017 Alexandre Chamard-bois
-** Last update Tue May 30 21:46:04 2017 Alexandre Chamard-bois
+** Last update Sun Jun  4 08:51:17 2017 alexandre Chamard-bois
 */
 
 #include <stdio.h>
@@ -14,10 +14,10 @@
 #include "libmy.h"
 #include "command.h"
 
-int lidar(float lid[32])
+int	lidar(float lid[32])
 {
-  int ret;
-  char *str;
+  int	ret;
+  char	*str;
 
   dprintf(2, "get_info_lidar\n");
   write(1, "GET_INFO_LIDAR\n", 15);
@@ -28,10 +28,10 @@ int lidar(float lid[32])
   return (ret);
 }
 
-int get_speed(float *get)
+int	get_speed(float *get)
 {
-  int ret;
-  char *str;
+  int	ret;
+  char	*str;
 
   dprintf(2, "get_current_speed\n");
   write(1, "GET_CURRENT_SPEED\n", 18);
@@ -42,10 +42,10 @@ int get_speed(float *get)
   return (ret);
 }
 
-int get_wheels(float *get)
+int	get_wheels(float *get)
 {
-  int ret;
-  char *str;
+  int	ret;
+  char	*str;
 
   dprintf(2, "get_current_wheels\n");
   write(1, "GET_CURRENT_WHEELS\n", 19);
@@ -56,10 +56,10 @@ int get_wheels(float *get)
   return (ret);
 }
 
-int cycle_wait(int nb)
+int	cycle_wait(int nb)
 {
-  int ret;
-  char *str;
+  int	ret;
+  char	*str;
 
   dprintf(2, "cycle_wait:%d\n", nb);
   fflush(stdout);
